@@ -87,15 +87,14 @@ namespace Waterskibaan
             {
                 return "";
             }
-            else
+            string result = "";
+
+            foreach (var item in _lijnen)
             {
-                var node = _lijnen.First;
-                while (node != null)
-                {
-                    return $"{ node.Value.PostitieOpdeKabel}|";
-                }
+                result += item.PostitieOpdeKabel.ToString() + "|";
             }
-            return "";
+            return result;
+            
         }
     }
 }
