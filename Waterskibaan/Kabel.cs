@@ -17,15 +17,19 @@ namespace Waterskibaan
 
         public bool IsStartPositieLeeg()
         {
-            // Old code
-            if (_lijnen.First.Value.PostitieOpdeKabel != 0 || _lijnen.First == null)
+            if (_lijnen.Count() != 0)
             {
-                return true;
+                if (_lijnen.First().PostitieOpdeKabel != 0)
+                    return true;
+                else
+                    return false;
             }
             else
             {
-                return false;
+                return true;
             }
+            
+            
         }
 
         public void NeemLijnInGebruik(Lijn lijn)
