@@ -17,37 +17,22 @@ namespace Waterskibaan
 
         public bool IsStartPositieLeeg()
         {
-            var node = _lijnen.First;
-            if (node == null)
+            // Old code
+            if (_lijnen.First.Value.PostitieOpdeKabel != 0 || _lijnen.First == null)
             {
                 return true;
             }
-            while (node != null)
+            else
             {
-                var nextNode = node.Next;
-                if (node.Value.PostitieOpdeKabel == 0)
-                {
-                    return false;
-                }
-                node = nextNode;
+                return false;
             }
-            return true;
-
-            // Old code
-            //if (_lijnen.First.Value.PostitieOpdeKabel != 0 || _lijnen.First == null)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
         }
 
         public void NeemLijnInGebruik(Lijn lijn)
         {
             if (IsStartPositieLeeg())
             {
+                lijn.PostitieOpdeKabel = 0;
                 _lijnen.AddFirst(lijn);
             }
         }
@@ -59,7 +44,9 @@ namespace Waterskibaan
                 item.PostitieOpdeKabel += 1;
                 if (item.PostitieOpdeKabel > 9)
                 {
+                    _lijnen.RemoveLast();
                     item.PostitieOpdeKabel = 0;
+                    _lijnen.AddFirst(item);
                 }
             }
         }

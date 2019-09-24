@@ -18,24 +18,16 @@ namespace Waterskibaan
         {
             Kabel cable = new Kabel();
 
-            Lijn l1 = new Lijn
-            {
-                PostitieOpdeKabel = 0
-            };
-
-            Lijn l2 = new Lijn {
-                PostitieOpdeKabel = 5
-            };
-
-            Lijn l3 = new Lijn
-            {
-                PostitieOpdeKabel = 6
-            };
-
+            Lijn l1 = new Lijn();
             cable.NeemLijnInGebruik(l1);
-            cable.NeemLijnInGebruik(l2);
-            cable.NeemLijnInGebruik(l3);
+            cable.VerschuifLijnen();
 
+            Lijn l2 = new Lijn();
+            cable.NeemLijnInGebruik(l2);
+            cable.VerschuifLijnen();
+
+            Lijn l3 = new Lijn();
+            cable.NeemLijnInGebruik(l3);
             cable.VerschuifLijnen();
 
             Console.WriteLine(cable);
