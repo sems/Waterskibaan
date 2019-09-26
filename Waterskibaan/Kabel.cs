@@ -28,8 +28,6 @@ namespace Waterskibaan
             {
                 return true;
             }
-            
-            
         }
 
         public void NeemLijnInGebruik(Lijn lijn)
@@ -62,6 +60,7 @@ namespace Waterskibaan
                 var nextNode = node.Next;
                 if (node.Value.PostitieOpdeKabel == 9)
                 {
+                    _lijnen.Remove(node);
                     return node.Value;
                 }
                 node = nextNode;
@@ -85,7 +84,6 @@ namespace Waterskibaan
                 result += item.PostitieOpdeKabel.ToString() + "|";
             }
             return result;
-            
         }
     }
 }
