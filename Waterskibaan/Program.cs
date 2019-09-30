@@ -10,7 +10,7 @@ namespace Waterskibaan
     {
         static void Main(string[] args)
         {
-            Program.TestOpdracht2();
+            //Program.TestOpdracht2();
             //Program.TestOpdracht3();
         }
 

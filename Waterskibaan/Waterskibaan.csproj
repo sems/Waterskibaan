@@ -45,13 +45,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMoves.cs" />
+    <Compile Include="JumpMove.cs" />
     <Compile Include="Kabel.cs" />
     <Compile Include="Lijn.cs" />
     <Compile Include="LijnenVoorraad.cs" />
+    <Compile Include="Movecollection.cs" />
+    <Compile Include="OneHandMove.cs" />
+    <Compile Include="OneLeggMove.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skies.cs" />
     <Compile Include="Sporter.cs" />
+    <Compile Include="TurnMove.cs" />
     <Compile Include="Waterskibaan.cs" />
     <Compile Include="Zwemvest.cs" />
   </ItemGroup>
