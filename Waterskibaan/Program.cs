@@ -12,7 +12,11 @@ namespace Waterskibaan
         {
             //Program.TestOpdracht2();
             //Program.TestOpdracht3();
-            Program.TestOpdracht8();
+            //Program.TestOpdracht8();
+
+            InstructieGroep i = new InstructieGroep();
+            //i.SportersVerlatenRij(3);
+            Console.WriteLine(i.Rij);
         }
 
         private static void TestOpdracht2()
