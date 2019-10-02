@@ -12,6 +12,7 @@ namespace Waterskibaan
         {
             //Program.TestOpdracht2();
             //Program.TestOpdracht3();
+            Program.TestOpdracht8();
         }
 
         private static void TestOpdracht2()
@@ -51,6 +52,17 @@ namespace Waterskibaan
             Console.WriteLine($"Aantal in rij: {lv1.GetAantalLijnen()}");
 
             Console.WriteLine(lv1);
+        }
+
+        private static void TestOpdracht8()
+        {
+            Waterskibaan w = new Waterskibaan();
+            Sporter s = new Sporter(Movecollection.GetWillekeurigeMoves());
+
+            //s.Zwemvest = new Zwemvest();
+            //s.Skies = new Skies();
+
+            w.SporterStart(s);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace Waterskibaan
         public Kabel Kabel { get; set; }
         public Waterskibaan()
         {
+            LijnenVoorraad = new LijnenVoorraad();
+            Kabel = new Kabel();
             for (int i = 0; i < 15; i++)
             {
                 LijnenVoorraad.LijnToevoegenAanRij(new Lijn());
@@ -30,19 +32,26 @@ namespace Waterskibaan
 
         public void SporterStart(Sporter sp)
         {
-            // init
-            Lijn newLine = LijnenVoorraad.VerwijderEersteLijn();
-            var R = new Random();
-            int Rounds = R.Next(1, 3);
+            if (sp.Zwemvest != null && sp.Skies != null)
+            {
+                // init
+                Lijn newLine = LijnenVoorraad.VerwijderEersteLijn();
+                var R = new Random();
+                int Rounds = R.Next(1, 3);
 
-            //Give random amount of laps
-            Color randomColor = Color.FromArgb(R.Next(256), R.Next(256), R.Next(256));
-            sp.AantalRondenNogTeGaan = Rounds;
-            sp.KledingKleur = randomColor;
-            newLine.Sporter = sp;
+                //Give random amount of laps
+                Color randomColor = Color.FromArgb(R.Next(256), R.Next(256), R.Next(256));
+                sp.AantalRondenNogTeGaan = Rounds;
+                sp.KledingKleur = randomColor;
+                newLine.Sporter = sp;
 
-            // Add line to cable
-            Kabel.NeemLijnInGebruik(newLine);
+                // Add line to cable
+                Kabel.NeemLijnInGebruik(newLine);
+            }
+            else
+            {
+                throw new ArgumentNullException("Geen zwemvest en skies");
+            }
         }
 
         //@Override
