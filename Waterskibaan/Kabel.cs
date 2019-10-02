@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Waterskibaan
 {
-    class Kabel
+    public class Kabel
     {
         private LinkedList<Lijn> _lijnen;
 

@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMoves.cs" />
+    <Compile Include="InstructieGroep.cs" />
+    <Compile Include="IWachtrij.cs" />
     <Compile Include="JumpMove.cs" />
     <Compile Include="Kabel.cs" />
     <Compile Include="Lijn.cs" />
@@ -57,6 +59,8 @@
     <Compile Include="Skies.cs" />
     <Compile Include="Sporter.cs" />
     <Compile Include="TurnMove.cs" />
+    <Compile Include="WachtrijInstructie.cs" />
+    <Compile Include="WachtrijStarten.cs" />
     <Compile Include="Waterskibaan.cs" />
     <Compile Include="Zwemvest.cs" />
   </ItemGroup>

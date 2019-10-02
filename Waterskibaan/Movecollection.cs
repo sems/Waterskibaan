@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Waterskibaan
 {
-    static class Movecollection
+    public static class Movecollection
     {
         static public List<IMoves> GetWillekeurigeMoves()
         {

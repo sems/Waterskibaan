@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Waterskibaan
 {
-    class JumpMove : IMoves
+    public class JumpMove : IMoves
     {
         public int Move()
         {
