@@ -48,6 +48,8 @@ namespace Waterskibaan
                 {
                     _lijnen.RemoveLast();
                     item.PostitieOpdeKabel = 0;
+                    // opgave 7
+                    item.Sporter.AantalRondenNogTeGaan--;
                     _lijnen.AddFirst(item);
                 }
             }
@@ -58,10 +60,15 @@ namespace Waterskibaan
             while (node != null)
             {
                 var nextNode = node.Next;
+                
                 if (node.Value.PostitieOpdeKabel == 9)
                 {
-                    _lijnen.Remove(node);
-                    return node.Value;
+                    // opgave 7
+                    if (node.Value.Sporter.AantalRondenNogTeGaan == 1)
+                    {
+                        _lijnen.Remove(node);
+                        return node.Value;
+                    }
                 }
                 node = nextNode;
             }
