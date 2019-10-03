@@ -41,7 +41,7 @@ namespace Waterskibaan
 
         public void VerschuifLijnen()
         {
-            foreach (Lijn item in _lijnen)
+            foreach (Lijn item in _lijnen.ToList())
             {
                 item.PostitieOpdeKabel += 1;
                 if (item.PostitieOpdeKabel > 9)

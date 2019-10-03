@@ -10,7 +10,8 @@ namespace Waterskibaan
     {
         static void Main(string[] args)
         {
-            TestOpdracht10();
+            TestOpdracht11();
+            Console.ReadLine();
         }
 
         private static void TestOpdracht2()
@@ -117,6 +118,12 @@ namespace Waterskibaan
             {
                 Console.WriteLine(sporter);
             }
+        }
+
+        private static void TestOpdracht11()
+        {
+            Game g = new Game();
+            g.Initialize();
         }
     }
 }

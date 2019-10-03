@@ -43,6 +43,8 @@ namespace Waterskibaan
                 Color randomColor = Color.FromArgb(R.Next(256), R.Next(256), R.Next(256));
                 sp.AantalRondenNogTeGaan = Rounds;
                 sp.KledingKleur = randomColor;
+                if (newLine == null)
+                    return;
                 newLine.Sporter = sp;
 
                 // Add line to cable
@@ -52,6 +54,16 @@ namespace Waterskibaan
             {
                 throw new ArgumentNullException("Geen zwemvest en skies");
             }
+        }
+
+        public void Start()
+        {
+
+        }
+
+        public void Stop()
+        {
+
         }
 
         //@Override
