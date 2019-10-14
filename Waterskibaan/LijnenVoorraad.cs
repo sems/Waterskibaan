@@ -39,12 +39,7 @@ namespace Waterskibaan
 
         public override string ToString()
         {
-            string result = "";
-            foreach (Lijn item in _lijnen)
-            {
-                result += "item | ";
-            }
-            return result;
+            return $"{_lijnen.Count} lijnen op voorraad";
         }
     }
 }
