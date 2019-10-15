@@ -68,12 +68,6 @@ namespace Waterskibaan
             {
                 Waterskibaan.SporterStart(WachtrijStarten.SporterVerlaatRij());
             }
-            Sporter s = new Sporter(Movecollection.GetWillekeurigeMoves())
-            {
-                Skies = new Skies(),
-                Zwemvest = new Zwemvest()
-            };
-            WachtrijStarten.SporterNeemPlaatsInRij(s);
             Console.WriteLine($"{Waterskibaan}\n");
             Console.WriteLine($"WachtrijInstructie: {WachtrijInstructie.Rij.Count}");
             Console.WriteLine($"InstructieGroep: {InstructieGroep.Rij.Count}");
