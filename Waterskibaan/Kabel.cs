@@ -51,6 +51,15 @@ namespace Waterskibaan
                     // opgave 7
                     item.Sporter.AantalRondenNogTeGaan--;
                     _lijnen.AddFirst(item);
+                } 
+                else
+                {
+                    Random r = new Random();
+                    int kans = r.Next(0, 4);
+                    if (item.Sporter.Moves.Count > 0 && kans == 3)
+                    {
+                        item.Sporter.DoeMove();
+                    }
                 }
             }
         }

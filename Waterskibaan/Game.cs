@@ -7,6 +7,9 @@ using System.Timers;
 
 namespace Waterskibaan
 {
+    public delegate void NieuweBezoekerHandler(NieuweBezoekerArgs args);
+    public delegate void InstructieAfgelopenHandler(InstructieAfgelopenArgs args);
+    public delegate void LijnenVerplaatstHandler();
     public class Game
     {
         public Waterskibaan Waterskibaan { get; set; }
@@ -15,31 +18,86 @@ namespace Waterskibaan
         public WachtrijStarten WachtrijStarten { get; set; }
 
         private Timer GameTimer;
+        private Timer WachtrijTimer;
+        private Timer InstructieGroepTimer;
+        private Timer LijnenVerplaatsenTimer;
+
+        public event NieuweBezoekerHandler NieuweBezoeker;
+        public event InstructieAfgelopenHandler InstructieAfgelopen;
+        public event LijnenVerplaatstHandler LijnenVerplaatst;
 
         public void Initialize()
         {
-            Waterskibaan = new Waterskibaan();
-            WachtrijInstructie = new WachtrijInstructie();
+            Waterskibaan = new Waterskibaan(this);
+            WachtrijInstructie = new WachtrijInstructie(this);
             InstructieGroep = new InstructieGroep();
             WachtrijStarten = new WachtrijStarten();
 
-            GameTimer = new Timer(1000);
+            GameTimer = new Timer(1000)
+            {
+                AutoReset = true,
+                Enabled = true
+            };
             GameTimer.Elapsed += GameLoop;
-            GameTimer.AutoReset = true;
-            GameTimer.Enabled = true;
+
+            InstructieGroepTimer = new Timer(20000)
+            {
+                AutoReset = true,
+                Enabled = true
+            };
+            InstructieGroepTimer.Elapsed += InstructieGroepLoop;
+
+            WachtrijTimer = new Timer(3000)
+            {
+                AutoReset = true,
+                Enabled = true
+            };
+            WachtrijTimer.Elapsed += WachtrijLoop;
+
+            LijnenVerplaatsenTimer = new Timer(4000)
+            {
+                AutoReset = true,
+                Enabled = true
+            };
+            LijnenVerplaatsenTimer.Elapsed += LijnenVerplaatsenLoop;
         }
 
         private void GameLoop(object sender, ElapsedEventArgs e)
+        {
+            if (Waterskibaan.Kabel.IsStartPositieLeeg())
+            {
+                Waterskibaan.SporterStart(WachtrijStarten.SporterVerlaatRij());
+            }
+            Sporter s = new Sporter(Movecollection.GetWillekeurigeMoves())
+            {
+                Skies = new Skies(),
+                Zwemvest = new Zwemvest()
+            };
+            WachtrijStarten.SporterNeemPlaatsInRij(s);
+            Console.WriteLine($"{Waterskibaan}\n");
+            Console.WriteLine($"WachtrijInstructie: {WachtrijInstructie.Rij.Count}");
+            Console.WriteLine($"InstructieGroep: {InstructieGroep.Rij.Count}");
+            Console.WriteLine($"WachtrijStarten: {WachtrijStarten.Rij.Count}");
+        }
+
+        private void WachtrijLoop(object sender, ElapsedEventArgs e)
         {
             Sporter s = new Sporter(Movecollection.GetWillekeurigeMoves())
             {
                 Skies = new Skies(),
                 Zwemvest = new Zwemvest()
             };
+            NieuweBezoeker?.Invoke(new NieuweBezoekerArgs(s));
+        }
 
-            Waterskibaan.SporterStart(s);
-            Waterskibaan.VerplaatsKabel();
-            Console.WriteLine($"{Waterskibaan}\n");
+        private void LijnenVerplaatsenLoop(object sender, ElapsedEventArgs e)
+        {
+            LijnenVerplaatst?.Invoke();
+        }
+
+        private void InstructieGroepLoop(object sender, ElapsedEventArgs e)
+        {
+            InstructieAfgelopen?.Invoke(new InstructieAfgelopenArgs(InstructieGroep, WachtrijStarten));
         }
     }
 }

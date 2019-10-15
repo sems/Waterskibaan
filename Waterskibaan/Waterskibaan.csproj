@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="IMoves.cs" />
+    <Compile Include="InstructieAfgelopenArgs.cs" />
     <Compile Include="InstructieGroep.cs" />
     <Compile Include="IWachtrij.cs" />
     <Compile Include="JumpMove.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Lijn.cs" />
     <Compile Include="LijnenVoorraad.cs" />
     <Compile Include="Movecollection.cs" />
+    <Compile Include="NieuweBezoekerArgs.cs" />
     <Compile Include="OneHandMove.cs" />
     <Compile Include="OneLeggMove.cs" />
     <Compile Include="Program.cs" />

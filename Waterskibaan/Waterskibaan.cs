@@ -11,7 +11,7 @@ namespace Waterskibaan
     {
         public LijnenVoorraad LijnenVoorraad { get; set; }
         public Kabel Kabel { get; set; }
-        public Waterskibaan()
+        public Waterskibaan(Game game)
         {
             LijnenVoorraad = new LijnenVoorraad();
             Kabel = new Kabel();
@@ -19,6 +19,7 @@ namespace Waterskibaan
             {
                 LijnenVoorraad.LijnToevoegenAanRij(new Lijn());
             }
+            game.LijnenVerplaatst += VerplaatsKabel;
         }
         public void VerplaatsKabel()
         {
@@ -32,6 +33,8 @@ namespace Waterskibaan
 
         public void SporterStart(Sporter sp)
         {
+            if (sp == null)
+                return;
             if (sp.Zwemvest != null && sp.Skies != null)
             {
                 if (Kabel.IsStartPositieLeeg())

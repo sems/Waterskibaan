@@ -15,11 +15,19 @@ namespace Waterskibaan
         public Color KledingKleur { get; set; }
         public int Score { get; set; }
         public List<IMoves> Moves { get; set; }
+        public IMoves HuidigeMove { get; set; }
 
         public Sporter(List<IMoves> moves)
         {
             AantalRondenNogTeGaan = 0;
             Moves = moves;
+        }
+
+        public void DoeMove()
+        {
+            Random r = new Random();
+            HuidigeMove = Moves[r.Next(0, Moves.Count)];
+            Score += HuidigeMove.Move();
         }
     }
 }

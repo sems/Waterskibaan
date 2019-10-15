@@ -28,13 +28,27 @@ namespace Waterskibaan
 
         public List<Sporter> SportersVerlatenRij(int aantal)
         {
-            List<Sporter> LeftSporters = null;
+            List<Sporter> LeftSporters = new List<Sporter>();
             if (Rij.Count > aantal)
             {
                 LeftSporters = new List<Sporter>();
                 for (int i = 0; i < aantal; i++) LeftSporters.Add(Rij.Dequeue());
             }
             return LeftSporters;
+        }
+
+        public Sporter SporterVerlaatRij()
+        {
+            if (Rij.Count > 0)
+            {
+                return Rij.Dequeue();
+            }
+            return null;
+        }
+
+        public int GetFreeSpace()
+        {
+            return MAX_LENGTE_RIJ - Rij.Count();
         }
 
         public override string ToString()

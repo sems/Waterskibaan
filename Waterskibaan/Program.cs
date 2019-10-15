@@ -10,7 +10,7 @@ namespace Waterskibaan
     {
         static void Main(string[] args)
         {
-            TestOpdracht11();
+            TestOpdracht12();
             Console.ReadLine();
         }
 
@@ -55,13 +55,13 @@ namespace Waterskibaan
 
         private static void TestOpdracht8()
         {
-            Waterskibaan w = new Waterskibaan();
+            //Waterskibaan w = new Waterskibaan();
             Sporter s = new Sporter(Movecollection.GetWillekeurigeMoves());
 
             //s.Zwemvest = new Zwemvest();
             //s.Skies = new Skies();
 
-            w.SporterStart(s);
+            //w.SporterStart(s);
         }
 
         private static void TestOpdracht10()
@@ -121,6 +121,12 @@ namespace Waterskibaan
         }
 
         private static void TestOpdracht11()
+        {
+            Game g = new Game();
+            g.Initialize();
+        }
+
+        private static void TestOpdracht12()
         {
             Game g = new Game();
             g.Initialize();
