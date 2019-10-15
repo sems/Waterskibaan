@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Waterskibaan", "Waterskibaan\Waterskibaan.csproj", "{E30BBE7B-6B5C-4FD1-9233-C5D1FE05B39D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterskibaanVisual", "WaterskibaanVisual\WaterskibaanVisual.csproj", "{E689E4B4-B545-41E9-8EE6-AB60C1734B2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E30BBE7B-6B5C-4FD1-9233-C5D1FE05B39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E30BBE7B-6B5C-4FD1-9233-C5D1FE05B39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E30BBE7B-6B5C-4FD1-9233-C5D1FE05B39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E689E4B4-B545-41E9-8EE6-AB60C1734B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E689E4B4-B545-41E9-8EE6-AB60C1734B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E689E4B4-B545-41E9-8EE6-AB60C1734B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E689E4B4-B545-41E9-8EE6-AB60C1734B2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
