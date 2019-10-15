@@ -44,9 +44,8 @@ namespace Waterskibaan
                     int Rounds = R.Next(1, 3);
 
                     //Give random amount of laps
-                    Color randomColor = Color.FromArgb(R.Next(256), R.Next(256), R.Next(256));
                     sp.AantalRondenNogTeGaan = Rounds;
-                    sp.KledingKleur = randomColor;
+
                     if (newLine == null)
                         return;
                     newLine.Sporter = sp;

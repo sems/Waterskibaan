@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace Waterskibaan
             };
             InstructieGroepTimer.Elapsed += InstructieGroepLoop;
 
-            WachtrijTimer = new Timer(3000)
+            WachtrijTimer = new Timer(2000)
             {
                 AutoReset = true,
                 Enabled = true
@@ -76,11 +77,15 @@ namespace Waterskibaan
 
         private void WachtrijLoop(object sender, ElapsedEventArgs e)
         {
+            Random R = new Random();
+            Color randomColor = Color.FromArgb(255, R.Next(256), R.Next(256), R.Next(256));
+            
             Sporter s = new Sporter(Movecollection.GetWillekeurigeMoves())
             {
                 Skies = new Skies(),
-                Zwemvest = new Zwemvest()
-            };
+                Zwemvest = new Zwemvest(),
+                KledingKleur = randomColor
+        };
             NieuweBezoeker?.Invoke(new NieuweBezoekerArgs(s));
         }
 
