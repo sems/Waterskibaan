@@ -34,21 +34,23 @@ namespace Waterskibaan
         {
             if (sp.Zwemvest != null && sp.Skies != null)
             {
-                // init
-                Lijn newLine = LijnenVoorraad.VerwijderEersteLijn();
-                var R = new Random();
-                int Rounds = R.Next(1, 3);
+                if (Kabel.IsStartPositieLeeg())
+                {
+                    Lijn newLine = LijnenVoorraad.VerwijderEersteLijn();
+                    var R = new Random();
+                    int Rounds = R.Next(1, 3);
 
-                //Give random amount of laps
-                Color randomColor = Color.FromArgb(R.Next(256), R.Next(256), R.Next(256));
-                sp.AantalRondenNogTeGaan = Rounds;
-                sp.KledingKleur = randomColor;
-                if (newLine == null)
-                    return;
-                newLine.Sporter = sp;
+                    //Give random amount of laps
+                    Color randomColor = Color.FromArgb(R.Next(256), R.Next(256), R.Next(256));
+                    sp.AantalRondenNogTeGaan = Rounds;
+                    sp.KledingKleur = randomColor;
+                    if (newLine == null)
+                        return;
+                    newLine.Sporter = sp;
 
-                // Add line to cable
-                Kabel.NeemLijnInGebruik(newLine);
+                    // Add line to cable
+                    Kabel.NeemLijnInGebruik(newLine);
+                }
             }
             else
             {
