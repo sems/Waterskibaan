@@ -21,7 +21,7 @@
         <Label x:Name="RedCounter" Content="0" HorizontalAlignment="Left" Margin="905,212,0,0" VerticalAlignment="Top"/>
         <Label Content="Lichste bezoekers:" HorizontalAlignment="Left" Margin="905,238,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.285,-0.148"/>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasLichsteBezoekers" HorizontalAlignment="Left" Height="31" Margin="908,269,0,0" VerticalAlignment="Top" Width="145"/>
-        <Label Content="Totaal:" HorizontalAlignment="Left" Margin="908,305,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.045,-1.109"/>
+        <Label Content="Totaal aantal rondjes:" HorizontalAlignment="Left" Margin="908,305,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.045,-1.109"/>
         <Label x:Name="LapsCounter" Content="0" HorizontalAlignment="Left" Margin="908,331,0,0" VerticalAlignment="Top"/>
         <Label Content="Moves:" HorizontalAlignment="Left" Margin="908,357,0,0" VerticalAlignment="Top"/>
         <Label x:Name="AllMoves" Content="" HorizontalAlignment="Left" Margin="908,388,0,-74" VerticalAlignment="Top" Height="155" Width="128"/>

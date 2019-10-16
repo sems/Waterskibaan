@@ -80,9 +80,10 @@ namespace Waterskibaan
         public int GetTotaalAantalRondjes()
         {
             int total = 0;
-
-
-
+            foreach (Sporter sporter in Bezoekers)
+            {
+                total += sporter.AantalRondenAlGedaan;
+            }
             return total;
         }
 

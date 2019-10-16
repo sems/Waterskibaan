@@ -44,6 +44,8 @@ namespace Waterskibaan
             foreach (Lijn item in _lijnen.ToList())
             {
                 item.PostitieOpdeKabel += 1;
+                if (item.PostitieOpdeKabel == 9) 
+                    item.Sporter.AantalRondenAlGedaan++;
                 if (item.PostitieOpdeKabel > 9)
                 {
                     _lijnen.RemoveLast();
