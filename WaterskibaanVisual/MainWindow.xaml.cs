@@ -52,14 +52,17 @@ namespace WaterskibaanVisual
             cv.Children.Add(circle);
         }
 
-        private static void DrawLabel(int x, int y, string name, Canvas cv)
+        private static void DrawLabel(int x, int y, string name, Canvas cv, bool outside)
         {
+            int width = 25;
+            if (outside)
+                width *= 2;
 
             Label dynamicLabel = new Label
             {
                 Name = $"Label_{name}",
                 Content = name,
-                Width = 25,
+                Width = width,
                 Height = 25,
                 FontSize = 10,
             };
@@ -69,6 +72,9 @@ namespace WaterskibaanVisual
             
             yWithMargin = (y * Diameter) + ((y - 1) * Diameter / 2);
             xWithMargin = (x * Diameter) + ((x - 1) * Diameter / 2);
+
+            if (outside)
+                yWithMargin -= 25;
 
             Canvas.SetTop(dynamicLabel, yWithMargin);
             Canvas.SetLeft(dynamicLabel, xWithMargin);
@@ -89,7 +95,7 @@ namespace WaterskibaanVisual
             xCableWithMargin = (xCable * Diameter) + ((xCable - 1) * Diameter / 2) + 12;
 
             // Create a Line  
-            Line redLine = new Line
+            Line line = new Line
             {
                 X1 = xWithMargin,
                 Y1 = yWithMargin,
@@ -102,11 +108,12 @@ namespace WaterskibaanVisual
             redBrush.Color = Colors.Black;
 
             // Set Line's width and color  
-            redLine.StrokeThickness = 4;
-            redLine.Stroke = redBrush;
+            line.StrokeThickness = 4;
+            line.Stroke = redBrush;
+            Canvas.SetZIndex(line, 4);
 
             // Add line to the Grid.  
-            cv.Children.Add(redLine);
+            cv.Children.Add(line);
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -197,7 +204,15 @@ namespace WaterskibaanVisual
                     {
                         Sporter sp = lijn.Sporter;
                         DrawSporter(locations[i, 0], locations[i, 1], 25, Color.FromArgb(sp.KledingKleur.A, sp.KledingKleur.R, sp.KledingKleur.G, sp.KledingKleur.B), CanvasBaan);
-                        DrawLabel(locations[i, 0], locations[i, 1], i.ToString(), CanvasBaan);
+                        // Label number
+                        DrawLabel(locations[i, 0], locations[i, 1], i.ToString(), CanvasBaan, false);
+
+                        //Label action
+                        if (sp.HuidigeMove != null)
+                        {
+                            DrawLabel(locations[i, 0], locations[i, 1], sp.HuidigeMove.ToString(), CanvasBaan, true);
+                        }
+                        // Line to cable
                         DrawLine(locations[i, 0], locations[i, 1], CanvasBaan);
                         i++;
                         sp = null;
