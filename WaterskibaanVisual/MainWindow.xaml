@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="1000" Loaded="WindowLoaded">
     <Grid>
-        <Canvas x:Name="CanvasBaan" Background="LightSteelBlue" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Margin="300,0,0,0" Width="600"/>
+        <Canvas Panel.ZIndex="-1" x:Name="CanvasBaan" Background="LightSteelBlue" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Margin="300,0,0,0" Width="600"/>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasWachtInstructie" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="300" Background="Gray"/>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasInstructie" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="300" Background="ForestGreen" Margin="0,250,0,0"/>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasWachtStart" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300" Background="DimGray" Margin="0,300,0,0"/>
+        <Label Content="Lijnen op&#10; voorraad:" HorizontalAlignment="Left" Margin="900,10,0,0" VerticalAlignment="Top" Height="54" Width="92"/>
+        <Label x:Name="LineCounter" Content="15" HorizontalAlignment="Left" Margin="905,46,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

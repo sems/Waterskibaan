@@ -34,6 +34,7 @@ namespace Waterskibaan
             InstructieGroep = new InstructieGroep();
             WachtrijStarten = new WachtrijStarten();
 
+            // default 1000
             GameTimer = new Timer(1000)
             {
                 AutoReset = true,
@@ -41,6 +42,7 @@ namespace Waterskibaan
             };
             GameTimer.Elapsed += GameLoop;
 
+            // default 20000
             InstructieGroepTimer = new Timer(20000)
             {
                 AutoReset = true,
@@ -48,6 +50,7 @@ namespace Waterskibaan
             };
             InstructieGroepTimer.Elapsed += InstructieGroepLoop;
 
+            // default 2000
             WachtrijTimer = new Timer(2000)
             {
                 AutoReset = true,
@@ -55,6 +58,7 @@ namespace Waterskibaan
             };
             WachtrijTimer.Elapsed += WachtrijLoop;
 
+            // default 4000
             LijnenVerplaatsenTimer = new Timer(4000)
             {
                 AutoReset = true,

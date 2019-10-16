@@ -27,7 +27,7 @@ namespace WaterskibaanVisual
             InitializeComponent();
         }
 
-        public static void DrawSporter(int x, int y, int Diameter, Color KledingKleur, Canvas cv)
+        private static void DrawSporter(int x, int y, int Diameter, Color KledingKleur, Canvas cv)
         {
             Brush brush = new SolidColorBrush(Color.FromArgb(KledingKleur.A, KledingKleur.R, KledingKleur.G, KledingKleur.B));
 
@@ -48,6 +48,30 @@ namespace WaterskibaanVisual
             Canvas.SetLeft(circle, xWithMargin);
            
             cv.Children.Add(circle);
+        }
+
+        private static void DrawLabel(int x, int y, string name, Canvas cv)
+        {
+
+            Label dynamicLabel = new Label
+            {
+                Name = $"Label_{name}",
+                Content = name,
+                Width = 25,
+                Height = 25,
+                FontSize = 8,
+            };
+
+            int yWithMargin, xWithMargin, Diameter;
+            Diameter = 25;
+            
+            yWithMargin = (y * Diameter) + ((y - 1) * Diameter / 2);
+            xWithMargin = (x * Diameter) + ((x - 1) * Diameter / 2);
+
+            Canvas.SetTop(dynamicLabel, yWithMargin);
+            Canvas.SetLeft(dynamicLabel, xWithMargin);
+
+            cv.Children.Add(dynamicLabel);
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -72,9 +96,12 @@ namespace WaterskibaanVisual
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
+                    // Count lijnvoorraad.
+                    LineCounter.Content = Game.Waterskibaan.LijnenVoorraad.GetAantalLijnen();
                     //clear
                     ClearCanvas(CanvasWachtInstructie);
-                    // Added WachtrijInstructie
+                    
+                    // WachtrijInstructie
                     int TempWachtrijInstrCountHorizontal = 1;
                     int TempWachtrijInstrCountVertical = 1;
                     foreach (Sporter s in Game.WachtrijInstructie.Rij)
@@ -88,6 +115,7 @@ namespace WaterskibaanVisual
                         TempWachtrijInstrCountHorizontal++;
                     }
 
+                    // Instructie
                     ClearCanvas(CanvasInstructie);
                     int TempInstrCountHorizontal = 1;
                     foreach (Sporter s in Game.InstructieGroep.Rij)
@@ -96,6 +124,7 @@ namespace WaterskibaanVisual
                         TempInstrCountHorizontal++;
                     }
 
+                    // WachtStart
                     ClearCanvas(CanvasWachtStart);
                     int TempWachtrijStartCountHorizontal = 1;
                     int TempWachtrijStartCountVertical = 1;
@@ -108,6 +137,34 @@ namespace WaterskibaanVisual
                         }
                         DrawSporter(TempWachtrijStartCountHorizontal, TempWachtrijStartCountVertical, 10, Color.FromArgb(s.KledingKleur.A, s.KledingKleur.R, s.KledingKleur.G, s.KledingKleur.B), CanvasWachtStart);
                         TempWachtrijStartCountHorizontal++;
+                    }
+
+                    // Waterskibaan;
+                    ClearCanvas(CanvasBaan);
+                    int[,] locations = new int[,]
+                    {
+                        {2, 4},
+                        {4, 4},
+                        {6, 4},
+                        {8, 4},
+                        {10, 4},
+                        {10, 8},
+                        {8, 8},
+                        {6, 8},
+                        {4, 8},
+                        {2, 8}
+                    };
+
+                    DrawSporter(6, 6, 25, Color.FromRgb(0, 0, 0), CanvasBaan);
+
+                    int i = 0;
+                    foreach (Lijn lijn in Game.Waterskibaan.Kabel.GetLijnen().ToList())
+                    {
+                        Sporter sp = lijn.Sporter;
+                        DrawSporter(locations[i, 0], locations[i, 1], 25, Color.FromArgb(sp.KledingKleur.A, sp.KledingKleur.R, sp.KledingKleur.G, sp.KledingKleur.B), CanvasBaan);
+                        DrawLabel(locations[i, 0], locations[i, 1], i.ToString(), CanvasBaan);
+                        i++;
+                        sp = null;
                     }
                 });
             }

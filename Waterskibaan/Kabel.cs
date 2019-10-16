@@ -87,6 +87,12 @@ namespace Waterskibaan
         {
             return _lijnen == null;
         }
+
+        public LinkedList<Lijn> GetLijnen()
+        {
+            return _lijnen;
+        }
+
         public override string ToString()
         {
             if (isEmpty())
