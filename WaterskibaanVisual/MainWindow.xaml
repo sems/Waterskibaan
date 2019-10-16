@@ -5,13 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaterskibaanVisual"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000" Loaded="WindowLoaded">
+        Title="MainWindow" Height="642.077" Width="1120.218" Loaded="WindowLoaded">
     <Grid>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasBaan" Background="LightSteelBlue" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Margin="300,0,0,0" Width="600"/>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasWachtInstructie" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="300" Background="Gray"/>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasInstructie" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="300" Background="ForestGreen" Margin="0,250,0,0"/>
         <Canvas Panel.ZIndex="-1" x:Name="CanvasWachtStart" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="300" Background="DimGray" Margin="0,300,0,0"/>
-        <Label Content="Lijnen op&#10; voorraad:" HorizontalAlignment="Left" Margin="900,10,0,0" VerticalAlignment="Top" Height="54" Width="92"/>
+        <Label Content="Lijnen voorraad:" HorizontalAlignment="Left" Margin="905,20,0,0" VerticalAlignment="Top" />
         <Label x:Name="LineCounter" Content="15" HorizontalAlignment="Left" Margin="905,46,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bezoekers:" HorizontalAlignment="Left" Margin="905,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.368,-0.486"/>
+        <Label x:Name="PlayerCounter" Content="0" HorizontalAlignment="Left" Margin="905,98,0,0" VerticalAlignment="Top"/>
+        <Label Content="Hoogste score:" HorizontalAlignment="Left" Margin="905,129,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.566,-0.628"/>
+        <Label x:Name="HighestScore" Content="0" HorizontalAlignment="Left" Margin="905,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.829,-0.882"/>
+        <Label Content="Bezoeker rode kleding:" HorizontalAlignment="Left" Margin="905,181,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="RedCounter" Content="0" HorizontalAlignment="Left" Margin="905,212,0,0" VerticalAlignment="Top"/>
+        <Label Content="Lichste bezoekers:" HorizontalAlignment="Left" Margin="905,238,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.285,-0.148"/>
+        <Canvas Panel.ZIndex="-1" x:Name="CanvasLichsteBezoekers" HorizontalAlignment="Left" Height="31" Margin="908,269,0,0" VerticalAlignment="Top" Width="145"/>
+        <Label Content="Totaal:" HorizontalAlignment="Left" Margin="908,305,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.045,-1.109"/>
+        <Label x:Name="LapsCounter" Content="0" HorizontalAlignment="Left" Margin="908,331,0,0" VerticalAlignment="Top"/>
+        <Label Content="Moves:" HorizontalAlignment="Left" Margin="908,357,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="AllMoves" Content="" HorizontalAlignment="Left" Margin="908,388,0,-74" VerticalAlignment="Top" Height="155" Width="128"/>
     </Grid>
 </Window>

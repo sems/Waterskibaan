@@ -17,6 +17,7 @@ namespace Waterskibaan
         public WachtrijInstructie WachtrijInstructie { get; set; }
         public InstructieGroep InstructieGroep { get; set; }
         public WachtrijStarten WachtrijStarten { get; set; }
+        public Logger Logger { get; set; }
 
         private Timer GameTimer;
         private Timer WachtrijTimer;
@@ -35,7 +36,7 @@ namespace Waterskibaan
             WachtrijStarten = new WachtrijStarten();
 
             // default 1000
-            GameTimer = new Timer(1000)
+            GameTimer = new Timer(500)
             {
                 AutoReset = true,
                 Enabled = true
@@ -43,7 +44,7 @@ namespace Waterskibaan
             GameTimer.Elapsed += GameLoop;
 
             // default 20000
-            InstructieGroepTimer = new Timer(20000)
+            InstructieGroepTimer = new Timer(1000)
             {
                 AutoReset = true,
                 Enabled = true
@@ -65,6 +66,7 @@ namespace Waterskibaan
                 Enabled = true
             };
             LijnenVerplaatsenTimer.Elapsed += LijnenVerplaatsenLoop;
+            Logger = new Logger(Waterskibaan.Kabel);
         }
 
         private void GameLoop(object sender, ElapsedEventArgs e)
@@ -73,10 +75,14 @@ namespace Waterskibaan
             {
                 Waterskibaan.SporterStart(WachtrijStarten.SporterVerlaatRij());
             }
+            
+            //NOTE: Debug
+            /*
             Console.WriteLine($"{Waterskibaan}\n");
             Console.WriteLine($"WachtrijInstructie: {WachtrijInstructie.Rij.Count}");
             Console.WriteLine($"InstructieGroep: {InstructieGroep.Rij.Count}");
             Console.WriteLine($"WachtrijStarten: {WachtrijStarten.Rij.Count}");
+            */
         }
 
         private void WachtrijLoop(object sender, ElapsedEventArgs e)

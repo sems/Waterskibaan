@@ -10,14 +10,13 @@ namespace Waterskibaan
     {
         public int Move()
         {
-            var R = new Random();
-            int succeed = R.Next(1, 3);
+            Random rand = new Random(DateTime.Now.Millisecond);
+            int random = rand.Next(0, 2);
 
-            // If succeed
-            if (succeed == 1)
+            if (random == 0)
                 return 14;
-            //failed
-            return 0;
+            else
+                return 0;
         }
 
         public override string ToString()

@@ -25,7 +25,7 @@ namespace Waterskibaan
 
         public void DoeMove()
         {
-            Random r = new Random();
+            Random r = new Random(DateTime.Now.Second);
             HuidigeMove = Moves[r.Next(0, Moves.Count)];
             Score += HuidigeMove.Move();
         }

@@ -37,7 +37,6 @@ namespace WaterskibaanVisual
                 Height = Diameter,
                 Stroke = brush,
                 StrokeThickness = Diameter,
-                
             };
 
             int yWithMargin, xWithMargin;
@@ -122,7 +121,10 @@ namespace WaterskibaanVisual
             Game.NieuweBezoeker += BezoekerHandler;
             Game.InstructieAfgelopen += InstructieHandler;
             Game.LijnenVerplaatst += LijnenVerplaatstHandler;
+            
             Game.Initialize();
+            // opdracht 14
+            Game.NieuweBezoeker += Game.Logger.NieuwBezoeker;            
         }
 
         private void BezoekerHandler(NieuweBezoekerArgs args) => UpdateCanvas();
@@ -138,8 +140,14 @@ namespace WaterskibaanVisual
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    // Count lijnvoorraad.
+                    // Counters
                     LineCounter.Content = Game.Waterskibaan.LijnenVoorraad.GetAantalLijnen();
+                    PlayerCounter.Content = Game.Logger.GetTotaalBezoekers();
+                    HighestScore.Content = Game.Logger.GetHoogsteScore();
+                    RedCounter.Content = Game.Logger.GetAantalBezoekersMetRood();
+                    LapsCounter.Content = Game.Logger.GetTotaalAantalRondjes();
+                    AllMoves.Content = Game.Logger.AlleHuidigeMoves();
+
                     //clear
                     ClearCanvas(CanvasWachtInstructie);
                     
@@ -203,6 +211,7 @@ namespace WaterskibaanVisual
                     foreach (Lijn lijn in Game.Waterskibaan.Kabel.GetLijnen().ToList())
                     {
                         Sporter sp = lijn.Sporter;
+                        
                         DrawSporter(locations[i, 0], locations[i, 1], 25, Color.FromArgb(sp.KledingKleur.A, sp.KledingKleur.R, sp.KledingKleur.G, sp.KledingKleur.B), CanvasBaan);
                         // Label number
                         DrawLabel(locations[i, 0], locations[i, 1], i.ToString(), CanvasBaan, false);
@@ -212,10 +221,24 @@ namespace WaterskibaanVisual
                         {
                             DrawLabel(locations[i, 0], locations[i, 1], sp.HuidigeMove.ToString(), CanvasBaan, true);
                         }
+
                         // Line to cable
                         DrawLine(locations[i, 0], locations[i, 1], CanvasBaan);
                         i++;
                         sp = null;
+                    }
+
+                    // Lichste;
+                    ClearCanvas(CanvasLichsteBezoekers);
+                    int limitCount = 0;
+                    foreach (var item in Game.Logger.SorteerOpLichsteKleur().Reverse())
+                    {
+                        //CanvasLichsteBezoekers
+                        if (limitCount <= 9)
+                        {
+                            DrawSporter(1+limitCount, 1, 10, Color.FromArgb(item.Value.A, item.Value.R, item.Value.G, item.Value.B), CanvasLichsteBezoekers);
+                            limitCount++;
+                        }
                     }
                 });
             }
