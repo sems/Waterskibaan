@@ -36,7 +36,8 @@ namespace WaterskibaanVisual
                 Width = Diameter,
                 Height = Diameter,
                 Stroke = brush,
-                StrokeThickness = Diameter
+                StrokeThickness = Diameter,
+                
             };
 
             int yWithMargin, xWithMargin;
@@ -46,6 +47,7 @@ namespace WaterskibaanVisual
 
             Canvas.SetTop(circle, yWithMargin);
             Canvas.SetLeft(circle, xWithMargin);
+            Canvas.SetZIndex(circle, 5);
            
             cv.Children.Add(circle);
         }
@@ -59,7 +61,7 @@ namespace WaterskibaanVisual
                 Content = name,
                 Width = 25,
                 Height = 25,
-                FontSize = 8,
+                FontSize = 10,
             };
 
             int yWithMargin, xWithMargin, Diameter;
@@ -70,8 +72,41 @@ namespace WaterskibaanVisual
 
             Canvas.SetTop(dynamicLabel, yWithMargin);
             Canvas.SetLeft(dynamicLabel, xWithMargin);
+            Canvas.SetZIndex(dynamicLabel, 10);
 
             cv.Children.Add(dynamicLabel);
+        }
+
+        private static void DrawLine(int x, int y, Canvas cv)
+        {
+            int yWithMargin, xWithMargin, yCableWithMargin, xCableWithMargin, Diameter, xCable, yCable;
+            Diameter = 25;
+            yCable = xCable = 6;
+
+            yWithMargin = (y * Diameter) + ((y - 1) * Diameter / 2) + 12;
+            xWithMargin = (x * Diameter) + ((x - 1) * Diameter / 2) + 12;
+            yCableWithMargin = (yCable * Diameter) + ((yCable - 1) * Diameter / 2) + 12;
+            xCableWithMargin = (xCable * Diameter) + ((xCable - 1) * Diameter / 2) + 12;
+
+            // Create a Line  
+            Line redLine = new Line
+            {
+                X1 = xWithMargin,
+                Y1 = yWithMargin,
+                X2 = xCableWithMargin,
+                Y2 = yCableWithMargin
+            };
+
+            // Create a red Brush  
+            SolidColorBrush redBrush = new SolidColorBrush();
+            redBrush.Color = Colors.Black;
+
+            // Set Line's width and color  
+            redLine.StrokeThickness = 4;
+            redLine.Stroke = redBrush;
+
+            // Add line to the Grid.  
+            cv.Children.Add(redLine);
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -163,6 +198,7 @@ namespace WaterskibaanVisual
                         Sporter sp = lijn.Sporter;
                         DrawSporter(locations[i, 0], locations[i, 1], 25, Color.FromArgb(sp.KledingKleur.A, sp.KledingKleur.R, sp.KledingKleur.G, sp.KledingKleur.B), CanvasBaan);
                         DrawLabel(locations[i, 0], locations[i, 1], i.ToString(), CanvasBaan);
+                        DrawLine(locations[i, 0], locations[i, 1], CanvasBaan);
                         i++;
                         sp = null;
                     }
